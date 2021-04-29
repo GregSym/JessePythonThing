@@ -29,16 +29,6 @@ class MatrixMerge:
             new_row = np.concatenate((row,self.B[i]))
             new_matrix.append(new_row)
 
-        # create new vstack with the rows in B shuffled
-
-        #np.roll(self.B, 1)
-
-        # add new matrix combo
-
-        # create new vstack with the rows in A shuffled
-
-        # add new matrix combo
-
         return new_matrix
 
     def matrixOfMatrices(self): 
@@ -55,4 +45,4 @@ class MatrixMerge:
 
 if __name__=="__main__":
     print(A[0])
-    print(MatrixMerge(A=A, B=B).C[0][1]) 
+    print(MatrixMerge(A=A, B=B).C) 
