@@ -45,13 +45,12 @@ class MatrixMerge:
         """Assemble the final product
         - shape: [[A0B*],[A1B*],[A2B*]]
         """
+        self.C = []
         # row 0 (A0)
-        row_0 = self.createMerge()
-        np.roll(self.B, 1)
-        row_1 = self.createMerge()
-        np.roll(self.B, 1)
-        row_2 = self.createMerge()
-        self.C = [row_0, row_1, row_2]
+        for _, _ in enumerate(self.A, 0):
+            row_0 = self.createMerge()
+            np.roll(self.B, 1)
+            self.C.append(row_0)
                         
 
 if __name__=="__main__":
