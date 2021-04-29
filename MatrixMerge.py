@@ -28,8 +28,16 @@ class MatrixMerge:
             print(self.C)
             new_row.clear()
         return self.C
-        
+
+    def createMergeTheSequel(self):
+        size = len(self.A)*len(self.B)
+        new_row = []
+        new_matrix = []
+        for i, row in enumerate(A, 0):
+            new_row = np.concatenate((row,B[i]))
+            new_matrix.append(new_row)
+        return new_matrix        
 
 if __name__=="__main__":
     print(A[0])
-    print(MatrixMerge(A=A, B=B).createMerge()) 
+    print(MatrixMerge(A=A, B=B).createMergeTheSequel()) 
