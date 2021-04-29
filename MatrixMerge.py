@@ -15,21 +15,9 @@ class MatrixMerge:
     def __init__(self, A, B):
         self.A = A
         self.B = B
-        
+        self.matrixOfMatrices()        
 
     def createMerge(self):
-        self.C = []
-        new_row = []
-        for i, row in enumerate(A, 0):   # gets both index and object at index for legibility
-            for j, element in enumerate(B[i], 0):
-                #print(element)
-                np.append(row, element)
-            self.C.append(row.flatten())
-            print(self.C)
-            new_row.clear()
-        return self.C
-
-    def createMergeTheSequel(self):
         """
         desired product: a new matrix of arrays combining the rows of A and B such that calling C[0][1] returns [A[0],B[1]].flatten()
         - currently works only for C[0][0]
@@ -37,20 +25,35 @@ class MatrixMerge:
         #size = len(self.A)*len(self.B)
         new_row = []
         new_matrix = []
-        for i, row in enumerate(A, 0):
-            new_row = np.concatenate((row,B[i]))
+        for i, row in enumerate(self.A, 0):
+            new_row = np.concatenate((row,self.B[i]))
             new_matrix.append(new_row)
 
-        # create new vstack with the elements in B shuffled
+        # create new vstack with the rows in B shuffled
+
+        #np.roll(self.B, 1)
 
         # add new matrix combo
 
-        # create new vstack with the elements in A shuffled
+        # create new vstack with the rows in A shuffled
 
         # add new matrix combo
 
-        return new_matrix        
+        return new_matrix
+
+    def matrixOfMatrices(self): 
+        """Assemble the final product
+        - shape: [[A0B*],[A1B*],[A2B*]]
+        """
+        # row 0 (A0)
+        row_0 = self.createMerge()
+        np.roll(self.B, 1)
+        row_1 = self.createMerge()
+        np.roll(self.B, 1)
+        row_2 = self.createMerge()
+        self.C = [row_0, row_1, row_2]
+                        
 
 if __name__=="__main__":
     print(A[0])
-    print(MatrixMerge(A=A, B=B).createMergeTheSequel()) 
+    print(MatrixMerge(A=A, B=B).C[0][1]) 
