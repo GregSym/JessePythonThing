@@ -1,7 +1,5 @@
 import numpy as np
 
-example_list = [[1,1],[1,2,3],[1,2]]
-
 class Targets:
     """Relate the targets for listing
     """
@@ -12,7 +10,12 @@ class Targets:
     def __repr__(self):
         return f"{self.loc}, {self.val}"
 
-def averager():
+def averager(example_list: list[list[float]]):
+    """fn for taking in an array of arrays and returning an average for every
+    extant position in each nested array
+
+    e.g [[1,1],[1,2,3],[1,2]] at input returns [1. ,1.66666667 , 3.]
+    """
     target_list = [] # define list of targets for averaging
     valid_pos = []
     for nested_list in example_list:
@@ -33,4 +36,7 @@ def averager():
     return output_array
 
 if __name__=="__main__":
-    print(averager())
+    """testing
+    """
+    example_list: list[list[float]] = [[1,1],[1,2,3],[1,2]]
+    print(averager(example_list=example_list))
