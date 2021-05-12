@@ -10,7 +10,7 @@ class Targets:
     def __repr__(self):
         return f"{self.loc}, {self.val}"
 
-def averager(example_list: list[list[float]]):
+def averager(example_list: list[list[float]]) -> np.ndarray:
     """fn for taking in an array of arrays and returning an average for every
     extant position in each nested array
 
@@ -25,7 +25,7 @@ def averager(example_list: list[list[float]]):
     for target in target_list: # get the full list of valid locations
         if target.loc not in valid_pos:
             valid_pos.append(target.loc)
-    output_array = np.zeros(len(valid_pos))
+    output_array: np.ndarray = np.zeros(len(valid_pos))
     for pos in valid_pos:
         accumulator = [] # local accumulator
         for target in target_list:
